@@ -1,18 +1,14 @@
-const excludedWords = ["a", "an", "the"];
+const bands = ['The Beatles', 'Led Zeppelin', 'Pink Floyd', 'The Who', 'The Doors', 'The Rolling Stones', 'Aerosmith', 'The Eagles', 'Anthrax', 'Soundgarden', 'Nirvana', 'Alice in Chains', 'The Black Keys', 'The Strokes', 'The White Stripes', 'Red Hot Chili Peppers', 'Green Day', 'Foo Fighters', 'The Killers', 'Arctic Monkeys'];
 
-// Function to remove excluded words from band names
-function removeExcludedWords(bandName) {
-  return bandName.split(" ").filter((word) => !excludedWords.includes(word.toLowerCase())).join(" ");
+function strip(article) {
+  return article.replace(/^(a |an |the )/i, '').trim();
 }
 
-// Sort band names in lexicographic order (excluding excluded words)
-const sortedBandNames = bandNames.map((name) => removeExcludedWords(name)).sort();
+const sortedBands = bands.sort((a, b) => strip(a) > strip(b) ? 1 : -1);
 
-// Add sorted band names to list
-const bandList = document.getElementById("band");
-sortedBandNames.forEach((name) => {
-  const li = document.createElement("li");
-  li.textContent = name;
-  bandList.appendChild(li);
+const ul = document.getElementById('bands');
+sortedBands.forEach(band => {
+  const li = document.createElement('li');
+  li.textContent = band;
+  ul.appendChild(li);
 });
-
