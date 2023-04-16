@@ -1,14 +1,16 @@
-const bands = ['The Beatles', 'Led Zeppelin', 'Pink Floyd', 'The Who', 'The Doors', 'The Rolling Stones', 'Aerosmith', 'The Eagles', 'Anthrax', 'Soundgarden', 'Nirvana', 'Alice in Chains', 'The Black Keys', 'The Strokes', 'The White Stripes', 'Red Hot Chili Peppers', 'Green Day', 'Foo Fighters', 'The Killers', 'Arctic Monkeys'];
+// Array of band names
+const bands = ['The Beatles', 'Radiohead', 'Led Zeppelin', 'Aerosmith', 'The Who', 'Pink Floyd'];
 
-function strip(article) {
-  return article.replace(/^(a |an |the )/i, '').trim();
+// Function to strip articles from band names
+function strip(bandName) {
+  return bandName.replace(/^(a |an |the )/i, '').trim();
 }
 
+// Sort the band names
 const sortedBands = bands.sort((a, b) => strip(a) > strip(b) ? 1 : -1);
 
-const ul = document.getElementById('bands');
-sortedBands.forEach(band => {
-  const li = document.createElement('li');
-  li.textContent = band;
-  ul.appendChild(li);
-});
+// Select the ul element
+const ul = document.querySelector('#bands');
+
+// Create and add li elements for each band name
+ul.innerHTML = sortedBands.map(band => `<li>${band}</li>`).join('');
