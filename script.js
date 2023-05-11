@@ -1,3 +1,5 @@
+const bands = ['The Rolling Stones', 'Led Zeppelin', 'The Who', 'Pink Floyd', 'The Beatles', 'Aerosmith'];
+
 function strip(article) {
   return article.replace(/^(a |an |the )/i, '').trim();
 }
